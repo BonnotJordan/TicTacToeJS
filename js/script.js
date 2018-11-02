@@ -119,7 +119,6 @@ function checkIfWinner() {
 			showAlert(2);
 		}
 	}
-
 }
 
 function razFunction() {
