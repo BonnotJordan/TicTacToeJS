@@ -1,3 +1,12 @@
+var lastPlayer = 1;
+window.onload = function() {
+	console.log("Page Loaded");
+	var textPlayerTurn = document.getElementById("playerTurn");
+	textPlayerTurn.innerHTML = "";
+	textPlayerTurn.innerHTML += "Au tour du joueur "+lastPlayer;
+}
+
+
 // Implementations of functions
 function createTable() {
 	var body = document.getElementById('myTableBody');
@@ -20,12 +29,28 @@ function createTable() {
 }
 // Function calls
 
+
 var onClickFunction = function()
 {
-    console.log("Clicked on :"+this.id);
-    var cellId = this.id;
+
+
+var cellId = this.id;
     var cellClicked = document.getElementById(cellId);
-    cellClicked.innerHTML = "X"
+    if (lastPlayer == 1){
+    	cellClicked.innerHTML = "X"
+		lastPlayer =2;
+	}
+	else if (lastPlayer == 2){
+		cellClicked.innerHTML = "O"
+		lastPlayer =1;
+	}
+	var textPlayerTurn = document.getElementById("playerTurn");
+	textPlayerTurn.innerHTML = "";
+	textPlayerTurn.innerHTML += "Au tour du joueur "+lastPlayer;
+	
+	//console.log("Player = "+lastPlayer);
+    console.log("Clicked on :"+this.id);
+    
 }
 
 
