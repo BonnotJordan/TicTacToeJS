@@ -2,9 +2,9 @@ var lastPlayer = 1;
 var numberOfWinsPlayer1 =0;
 var numberOfWinsPlayer2 =0;
 var winner;
+var textPlayerTurn = document.getElementById("playerTurn");
 window.onload = function() {
 	console.log("Page Loaded");
-	var textPlayerTurn = document.getElementById("playerTurn");
 	textPlayerTurn.innerHTML = "";
 	textPlayerTurn.innerHTML += "Au tour du joueur "+lastPlayer;
 }
@@ -37,8 +37,10 @@ function checkIfWinner() {
 	if(document.getElementById("cell00").innerHTML==document.getElementById("cell01").innerHTML && document.getElementById("cell00").innerHTML==document.getElementById("cell02").innerHTML){
 		if(document.getElementById("cell00").innerHTML == "X"){
 			console.log("Player 1 win 1 line");
+			showAlert(1);
 		} else if (document.getElementById("cell00").innerHTML == "O") {
 			console.log("Player 2 win 1 line");
+			showAlert(2);
 		}
 	
 	} 
@@ -46,8 +48,10 @@ function checkIfWinner() {
 	else if(document.getElementById("cell10").innerHTML==document.getElementById("cell11").innerHTML && document.getElementById("cell10").innerHTML==document.getElementById("cell12").innerHTML){
 		if(document.getElementById("cell10").innerHTML == "X"){
 			console.log("Player 1 win 2 line");
+			showAlert(1);
 		} else if(document.getElementById("cell10").innerHTML == "O"){
 			console.log("Player 2 win 2 line");
+			showAlert(2);
 		}
 	
 	} 
@@ -55,8 +59,10 @@ function checkIfWinner() {
 	else if(document.getElementById("cell20").innerHTML==document.getElementById("cell21").innerHTML && document.getElementById("cell20").innerHTML==document.getElementById("cell22").innerHTML){
 		if(document.getElementById("cell20").innerHTML == "X"){
 			console.log("Player 1 win 3 line");
+			showAlert(1);
 		} else if (document.getElementById("cell20").innerHTML == "O") {
 			console.log("Player 2 win 3 line");
+			showAlert(2);
 		}
 	
 	} 
@@ -64,8 +70,10 @@ function checkIfWinner() {
 	else if(document.getElementById("cell00").innerHTML==document.getElementById("cell10").innerHTML && document.getElementById("cell00").innerHTML==document.getElementById("cell20").innerHTML){
 		if(document.getElementById("cell00").innerHTML == "X"){
 			console.log("Player 1 win 1 col");
+			showAlert(1);
 		} else if (document.getElementById("cell00").innerHTML == "O") {
 			console.log("Player 2 win 1 col");
+			showAlert(2);
 		}
 	
 	} 
@@ -73,8 +81,10 @@ function checkIfWinner() {
 	else if(document.getElementById("cell01").innerHTML==document.getElementById("cell11").innerHTML && document.getElementById("cell01").innerHTML==document.getElementById("cell21").innerHTML){
 		if(document.getElementById("cell01").innerHTML == "X"){
 			console.log("Player 1 win 2 col");
+			showAlert(1);
 		} else if (document.getElementById("cell01").innerHTML == "O"){
 			console.log("Player 2 win 2 col");
+			showAlert(2);
 		}
 	
 	}
@@ -82,8 +92,10 @@ function checkIfWinner() {
 	else if(document.getElementById("cell02").innerHTML==document.getElementById("cell12").innerHTML && document.getElementById("cell02").innerHTML==document.getElementById("cell22").innerHTML){
 		if(document.getElementById("cell02").innerHTML == "X"){
 			console.log("Player 1 win 3 col");
+			showAlert(1);
 		} else if (document.getElementById("cell02").innerHTML == "O"){
 			console.log("Player 2 win 3 col");
+			showAlert(2);
 		}
 	
 	} 
@@ -91,22 +103,45 @@ function checkIfWinner() {
 	else if(document.getElementById("cell00").innerHTML==document.getElementById("cell11").innerHTML && document.getElementById("cell00").innerHTML==document.getElementById("cell22").innerHTML){
 		if(document.getElementById("cell00").innerHTML == "X"){
 			console.log("Player 1 win 1 diag");
+			showAlert(1);
 		} else if (document.getElementById("cell00").innerHTML == "O"){
 			console.log("Player 2 win 1 diag");
+			showAlert(2);
 		}
 	} 
 	//diagonale /
 	else if(document.getElementById("cell02").innerHTML==document.getElementById("cell11").innerHTML && document.getElementById("cell02").innerHTML==document.getElementById("cell20").innerHTML){
 		if(document.getElementById("cell02").innerHTML == "X"){
 			console.log("Player 1 win 2 diag");
+			showAlert(1);
 		} else if (document.getElementById("cell02").innerHTML == "O"){
 			console.log("Player 2 win 2 diag");
+			showAlert(2);
+		}
+	}
+
+}
+
+function razFunction() {
+	console.log("RAZ clicked");
+	lastPlayer = 1;
+	textPlayerTurn.innerHTML = "";
+	textPlayerTurn.innerHTML += "Au tour du joueur "+lastPlayer;
+	for(var i=0;i<3;i++){
+		for(var j=0;j<3;j++){
+			document.getElementById("cell"+i+j).innerHTML = "";
 		}
 	}
 }
 
+function showAlert(winner){
+	alert("Le gagnant est le joueur "+winner);
+	razFunction();
+}
 
-
+function showAlertDraw() {
+	alert("Personne n'a gagné cette partie, voulez-vous faire une autre partie ?");
+}
 var onClickFunction = function()
 {
 	var cellId = this.id;
@@ -123,7 +158,6 @@ var onClickFunction = function()
 			lastPlayer =1;
 		}
     }
-	var textPlayerTurn = document.getElementById("playerTurn");
 	textPlayerTurn.innerHTML = "";
 	textPlayerTurn.innerHTML += "Au tour du joueur "+lastPlayer;
 	
@@ -141,15 +175,7 @@ function setOnClickMethodToCells() {
 	}
 }
 
-function razFunction() {
-	console.log("RAZ clicked");
-	lastPlayer = 1;
-	for(var i=0;i<3;i++){
-		for(var j=0;j<3;j++){
-			document.getElementById("cell"+i+j).innerHTML = "";
-		}
-	}
-}
+
 
 // Function calls
 createTable();
