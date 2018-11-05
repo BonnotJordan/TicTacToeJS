@@ -236,13 +236,13 @@ var onClickFunction = function()
 		}
 		numberOfCellsFilled += 1;
     }
-    
+    checkIfWinner();
 	textPlayerTurn.innerHTML = "";
 	textPlayerTurn.innerHTML += "Au tour du joueur "+lastPlayer;
 	
 	
     console.log("Clicked on :"+this.id);
-    checkIfWinner();
+    
 }
 
 function setOnClickMethodToCells() {
