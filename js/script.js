@@ -234,8 +234,9 @@ var onClickFunction = function()
 			cellClicked.innerHTML = "O"
 			lastPlayer =1;
 		}
+		numberOfCellsFilled += 1;
     }
-    numberOfCellsFilled += 1;
+    
 	textPlayerTurn.innerHTML = "";
 	textPlayerTurn.innerHTML += "Au tour du joueur "+lastPlayer;
 	
